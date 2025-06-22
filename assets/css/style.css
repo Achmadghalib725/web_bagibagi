@@ -1,0 +1,911 @@
+
+/* 1. FONDASI & VARIABEL */
+:root {
+    --primary-color: #01aa5b; /* Hijau Produktif (warna baru Anda) */
+    --primary-hover: #018d4a; /* Warna hover yang sedikit lebih gelap agar serasi */
+    --dark-text: #212529;
+    --body-text: #495057;
+    --light-text: #6c757d;
+    --light-bg: #f8f9fa;
+    --border-color: #dee2e6;
+    --white-color: #FFFFFF;
+    --shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+    --success-color: #198754;
+    --danger-color: #dc3545;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--light-bg);
+    color: var(--body-text);
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* 2. HEADER & NAVBAR MODERN */
+.app-header {
+    background-color: var(--white-color);
+    border-bottom: 1px solid var(--border-color);
+    padding: 0 30px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+}
+
+.logotype p {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.main-nav a {
+    margin-left: 15px;
+    font-weight: 500;
+    color: var(--body-text);
+    padding: 8px 16px;
+    border-radius: 6px;
+    transition: background-color 0.2s;
+}
+.main-nav a:hover { background-color: var(--light-bg); }
+.main-nav a.btn-register {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+}
+.main-nav a.btn-register:hover { background-color: var(--primary-hover); }
+
+/* 3. MENU PROFIL DROPDOWN */
+.profile-menu { position: relative; }
+.profile-toggle {
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 30px;
+    transition: background-color 0.2s;
+}
+.profile-toggle:hover { background-color: var(--light-bg); }
+.profile-toggle span { font-weight: 600; margin-right: 10px; }
+.profile-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--border-color);
+}
+.profile-dropdown {
+    display: none;
+    position: absolute;
+    top: 110%;
+    right: 0;
+    background-color: var(--white-color);
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    width: 220px;
+    overflow: hidden;
+    z-index: 1001;
+}
+.profile-dropdown.show { display: block; }
+.profile-dropdown a {
+    display: block;
+    padding: 12px 20px;
+    color: var(--body-text);
+    font-weight: 500;
+    text-decoration: none;
+}
+.profile-dropdown a:hover { background-color: var(--light-bg); }
+.dropdown-divider { height: 1px; background-color: var(--border-color); margin: 8px 0; }
+.logout-link { color: var(--danger-color) !important; }
+
+/* 4. LAYOUT KONTEN UTAMA */
+.main-content {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 15px;
+    background-color: var(--white-color);
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+}
+
+.app-footer { text-align: center; padding: 20px; color: var(--light-text); font-size: 0.9em; }
+
+/* 5. PENYESUAIAN ELEMEN LAIN */
+button, .btn {
+    font-family: 'Poppins', sans-serif;
+    padding: 12px 24px; /* Ukuran tombol lebih besar */
+    font-size: 16px;
+    font-weight: 600;
+}
+.task-form input[type="text"] {
+    font-size: 16px;
+    padding: 12px;
+}
+.task-card { border: none; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+
+/* Re-use dan sesuaikan style lama */
+h3 { font-size: 28px; font-weight: 700; color: var(--dark-text); }
+.page-header {  
+    padding-bottom: 15px; 
+}
+
+/* (Anda bisa salin-tempel style lain dari CSS sebelumnya yang masih relevan di sini) */
+.form-group { margin-bottom: 20px; }
+.form-group label { display: block; margin-bottom: 8px; font-weight: 600; }
+.form-group input, .form-group textarea, .form-group select {
+    width: 100%; padding: 12px; border: 1px solid var(--border-color);
+    border-radius: 6px; box-sizing: border-box; transition: border-color 0.2s, box-shadow 0.2s;
+}
+.form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+    outline: none; border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.25);
+}
+.data-table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+.data-table th, .data-table td { border-bottom: 1px solid var(--border-color); padding: 12px; text-align: left; }
+.data-table th { background-color: var(--light-bg); font-weight: 600; }
+
+
+/* assets/css/style.css - Tambahan untuk Halaman Login/Register Baru */
+
+/* Variabel Warna Baru */
+:root {
+    --todoist-red: #db4c3f;
+    --todoist-red-hover: #c94436;
+}
+
+/* Wrapper Utama Halaman Autentikasi */
+.auth-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--white-color);
+}
+
+.auth-container {
+    display: flex;
+    width: 100%;
+    max-width: 1000px;
+    margin: 20px;
+}
+
+/* Kolom Kiri: Formulir */
+.auth-form-column {
+    flex: 1;
+    padding: 40px;
+    max-width: 450px;
+    margin: 0 auto; /* Pusatkan jika hanya satu kolom */
+}
+
+.auth-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+.auth-header .logotype {
+    font-size: 32px; /* Dari 24px menjadi 32px */
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #01aa5b;
+}
+.auth-header h2 {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--dark-text);
+}
+
+/* Tombol Social Login */
+.social-login-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background-color: var(--white-color);
+    color: var(--dark-text);
+    font-weight: 500;
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+.social-login-btn:hover {
+    background-color: var(--light-bg);
+}
+.social-login-btn img {
+    margin-right: 10px;
+    width: 18px;
+    height: 18px;
+}
+
+/* Separator "OR" */
+.separator {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: var(--light-text);
+    margin: 20px 0;
+}
+.separator::before, .separator::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid var(--border-color);
+}
+.separator:not(:empty)::before { margin-right: .25em; }
+.separator:not(:empty)::after { margin-left: .25em; }
+
+/* Tombol Aksi Utama */
+.btn-primary-auth {
+    width: 100%;
+    background-color: var(--primary-color);
+    font-weight: 600;
+    padding: 14px;
+}
+.btn-primary-auth:hover {
+    background-color: var(--primary-hover);
+}
+
+.auth-footer {
+    text-align: center;
+    margin-top: 20px;
+    color: var(--body-text);
+}
+.auth-footer a {
+    text-align: center;
+    margin-top: 20px;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+/* Kolom Kanan: Promo */
+.auth-promo-column {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    background-color: var(--light-bg); /* Beri sedikit warna latar */
+    border-radius: 12px;
+}
+.promo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    text-align: center;
+}
+.promo-item p {
+    margin-top: 10px;
+    color: var(--body-text);
+    line-height: 1.5;
+}
+
+/* Aturan untuk layar kecil */
+@media (max-width: 850px) {
+    .auth-promo-column {
+        display: none; /* Sembunyikan kolom promo di layar kecil */
+    }
+}
+
+
+/* assets/css/style.css - Tambahan untuk Layout Workspace */
+
+/* Hapus .container lama karena kita pakai layout baru */
+/* Anda bisa hapus .container atau biarkan untuk halaman lain */
+
+/* 1. STRUKTUR UTAMA APP LAYOUT */
+.app-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr; /* Lebar sidebar & sisa untuk konten */
+    height: 100vh;
+}
+
+/* 2. SIDEBAR NAVIGASI */
+.app-sidebar {
+    background-color: #fafafa;
+    border-right: 1px solid var(--border-color);
+    padding: 20px 10px;
+    display: flex;
+    flex-direction: column;
+}
+.sidebar-header { padding: 0 10px 20px 10px; }
+.profile-menu-sidebar { display: flex; align-items: center; gap: 10px; }
+.profile-avatar-sidebar { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; }
+.profile-menu-sidebar span { font-weight: 600; }
+
+.sidebar-nav { flex-grow: 1; }
+.nav-section { margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--border-color); }
+.nav-section-title { font-size: 0.9em; font-weight: 600; color: var(--light-text); padding: 0 10px 10px 10px; }
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    padding: 8px 10px;
+    border-radius: 6px;
+    color: var(--dark-text);
+    text-decoration: none;
+    font-weight: 500;
+    margin-bottom: 2px;
+}
+.nav-item:hover { background-color: #e9e9e9; }
+.nav-item.active { background-color: #ffe5e1; color: #db4c3f; } /* Warna aktif seperti Todoist */
+.nav-item.primary-action { color: var(--primary-color); font-weight: 600; }
+.nav-item .nav-icon { margin-right: 15px; width: 20px; text-align: center; }
+.nav-item .nav-count { margin-left: auto; color: var(--light-text); font-size: 0.9em; }
+
+.sidebar-footer { padding-top: 20px; border-top: 1px solid var(--border-color); }
+
+/* 3. AREA KONTEN UTAMA */
+.app-content {
+    padding: 30px 60px;
+    overflow-y: auto; /* Agar bisa di-scroll jika kontennya panjang */
+}
+.content-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+.content-header h2 { font-size: 24px; font-weight: 700; margin: 0; }
+.task-count-header { color: var(--light-text); font-size: 0.9em; margin-left: 10px; }
+.content-header p {
+    margin: 20px;
+}
+/* 4. DAFTAR TUGAS BARU (TODOIST STYLE) */
+.task-item {
+    display: flex;
+    align-items: flex-start;
+    padding: 15px 5px;
+    border-bottom: 1px solid var(--border-color);
+}
+.task-item:hover { background-color: #f9f9f9; }
+.task-item-left { display: flex; align-items: center; gap: 15px; }
+.task-checkbox {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+    cursor: pointer;
+    background-color: transparent;
+    transition: border-color 0.2s;
+}
+.task-checkbox:hover { border-color: var(--primary-color); }
+.task-item-title { font-size: 1em; }
+
+.add-task-inline {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 5px;
+    color: var(--light-text);
+    text-decoration: none;
+    border-radius: 6px;
+}
+.add-task-inline:hover { color: var(--primary-color); }
+.add-task-inline .add-task-icon {
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 20px;
+}
+/* assets/css/style.css - Tambahan untuk Fungsionalitas Dashboard */
+
+/* 1. Form Tambah Tugas Inline */
+.task-form-inline {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+.task-form-inline input[type="text"] {
+    flex-grow: 1;
+    font-size: 1em;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+}
+.task-form-inline button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: 500;
+    padding: 0 20px;
+    cursor: pointer;
+}
+
+/* 2. Checkbox Fungsional */
+.task-checkbox-link {
+    display: inline-block;
+    text-decoration: none;
+}
+.task-checkbox {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+    cursor: pointer;
+    background-color: transparent;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+.task-checkbox:hover {
+    border-color: var(--primary-color);
+    background-color: rgba(1, 170, 91, 0.1); /* Warna hijau transparan */
+}
+.task-item.task-completed .task-checkbox {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+.task-item.task-completed .task-item-title {
+    text-decoration: line-through;
+    color: var(--light-text);
+}
+
+
+/* 3. Tombol Aksi Edit & Hapus */
+.task-item-right {
+    display: flex;
+    align-items: center;
+}
+.task-item-actions {
+    display: flex;
+    opacity: 0; /* Sembunyikan secara default */
+    transition: opacity 0.2s ease-in-out;
+}
+.task-item:hover .task-item-actions {
+    opacity: 1; /* Tampilkan saat task item di-hover */
+}
+.action-btn {
+    display: inline-block;
+    padding: 8px;
+    margin-left: 5px;
+    border-radius: 6px;
+    line-height: 1;
+}
+.action-btn:hover {
+    background-color: #e9e9e9;
+}
+
+/* assets/css/style.css - Tambahan untuk Modal & Ikon */
+
+/* Penyesuaian Sidebar dengan Ikon */
+.nav-item .feather { margin-right: 15px; }
+.nav-item.primary-action .feather { color: var(--primary-color); }
+
+/* Penyesuaian Tombol Aksi Tugas dengan Ikon */
+.action-btn .feather { width: 18px; height: 18px; color: var(--light-text); }
+.action-btn:hover .feather { color: var(--dark-text); }
+
+/* Penyesuaian Checkbox dengan Ikon */
+.task-checkbox span .feather { width: 16px; height: 16px; stroke-width: 3; }
+
+
+/* MODAL STYLING */
+.modal {
+    display: none; /* Sembunyi secara default */
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5); /* Latar belakang gelap transparan */
+}
+.modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 25px;
+    border: 1px solid #888;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    animation: slide-down 0.3s ease-out;
+}
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+.modal-header h4 { margin: 0; font-size: 1.2em; font-weight: 600; }
+.close-modal-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+.close-modal-btn:hover, .close-modal-btn:focus {
+    color: black;
+    text-decoration: none;
+}
+@keyframes slide-down {
+    from {transform: translateY(-50px); opacity: 0}
+    to {transform: translateY(0); opacity: 1}
+}
+
+
+
+/* assets/css/style.css - Tambahan untuk Halaman Profil */
+.content-header-main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;  
+}
+.profile-page-layout {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+.profile-form-section {
+    flex: 2; /* Ambil porsi 2/3 */
+    min-width: 300px;
+}
+.profile-picture-section {
+    flex: 1; /* Ambil porsi 1/3 */
+    min-width: 250px;
+    text-align: center;
+}
+.profile-pic-large {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+    border: 4px solid var(--white-color);
+    box-shadow: var(--shadow-md);
+}
+.file-upload-label {
+    display: block;
+    background-color: var(--light-bg);
+    padding: 10px;
+    border: 1px dashed var(--border-color);
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: center;
+    margin-bottom: 15px;
+}
+.message-success{
+    color: var(--success-color);
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+.message-error {
+    color: var(--danger-color);
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+.file-upload-label:hover {
+    background-color: #e9ecef;
+}
+input[type="file"] {
+    display: none; /* Sembunyikan input file default */
+}
+
+/* assets/css/style.css - Tambahan untuk Admin Dashboard */
+
+.admin-section {
+    margin-top: 40px;
+}
+.admin-section h4 {
+    font-size: 1.2em;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+.table-responsive {
+    width: 100%;
+    overflow-x: auto; /* Agar bisa di-scroll ke samping di layar kecil */
+}
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9em;
+}
+.data-table th, .data-table td {
+    border-bottom: 1px solid var(--border-color);
+    padding: 12px 15px;
+    text-align: left;
+    white-space: nowrap; /* Mencegah teks turun baris */
+}
+.data-table thead th {
+    background-color: var(--light-bg);
+    font-weight: 600;
+    color: var(--light-text);
+    text-transform: uppercase;
+    font-size: 0.8em;
+    letter-spacing: 0.5px;
+}
+.data-table tbody tr:hover {
+    background-color: var(--light-bg);
+}
+.data-table .actions {
+    display: flex;
+    gap: 8px;
+}
+.action-btn-sm {
+    padding: 4px 12px;
+    border-radius: 20px; /* Membuatnya seperti pil */
+    font-size: 0.85em;
+    font-weight: 600;
+    text-decoration: none;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+.action-btn-sm.btn-edit {
+    background-color: #4A90E2; /* Biru */
+}
+.action-btn-sm.btn-edit:hover {
+    background-color: #357ABD;
+}
+.action-btn-sm.btn-delete {
+    background-color: var(--danger-color);
+}
+.action-btn-sm.btn-delete:hover {
+    background-color: #bb2d3b;
+}
+
+/* Badge untuk Role dan Status */
+.role-badge, .status-badge {
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 0.8em;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+.role-admin { background-color: #f8d7da; color: #721c24; }
+.role-user { background-color: #e2e3e5; color: #495057; }
+.status-pending { background-color: #fff3cd; color: #664d03; }
+.status-in_progress { background-color: #cff4fc; color: #055160; }
+.status-completed { background-color: #d1e7dd; color: #0f5132; }
+
+
+/* assets/css/style.css - Tambahan untuk Fitur Kolaborasi */
+
+.edit-task-layout {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;  
+}
+.main-edit-form {
+    flex: 2; /* Ambil porsi 2/3 */
+    min-width: 350px;
+}
+.collaborators-section {
+    flex: 1; /* Ambil porsi 1/3 */
+    min-width: 250px;
+    background-color: var(--light-bg);
+    padding: 20px;
+    border-radius: 8px;
+}
+.collaborators-section h4 {
+    margin-top: 0;
+    font-weight: 600;
+}
+.collaborators-section h5 {
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+.collaborators-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+.collaborator-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.collaborator-item img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.collaborator-item span {
+    font-weight: 500;
+}
+.invite-form button {
+    width: 100%;
+}
+
+/* assets/css/style.css - Tambahan untuk Notifikasi Header */
+
+.header-right-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Jarak antara lonceng dan menu profil */
+}
+
+.header-action-btn {
+    position: relative;
+    color: var(--light-text);
+    padding: 8px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.header-action-btn:hover {
+    background-color: var(--light-bg);
+    color: var(--dark-text);
+}
+
+.notification-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: var(--danger-color);
+    color: white;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    font-size: 11px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--white-color);
+}
+
+/* assets/css/style.css - Tambahan untuk Halaman Notifikasi */
+.content-warpper{
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;  
+
+}
+/* Membungkus seluruh daftar notifikasi dan memposisikannya di tengah */
+.notification-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+    
+}
+
+/* Setiap notifikasi individual */
+.notification-item {
+    display: flex;
+    align-items: flex-start;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 16px 20px;
+    max-width: 600px;
+    width: 100%;
+    margin-bottom: 16px;
+    text-decoration: none;
+    color: #333;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    transition: background-color 0.2s;
+}
+
+.notification-item:hover {
+    background-color: #f9f9f9;
+}
+
+/* Ikon notifikasi */
+.notification-icon {
+    color: green;
+    font-size: 20px;
+    margin-right: 12px;
+    margin-top: 2px;
+}
+
+/* Konten notifikasi */
+.notification-content {
+    flex: 1;
+}
+
+.notification-message {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.notification-time {
+    font-size: 0.85rem;
+    color: #777;
+    margin-top: 4px;
+    display: block;
+}
+
+/* Pesan jika tidak ada notifikasi */
+.no-tasks-message {
+    text-align: center;
+    font-size: 1rem;
+    color: #999;
+    margin-top: 60px;
+}
+
+.card {
+    background-color: var(--white-color);
+    border: 1px solid var(--border-color);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    transition: transform 0.2s;
+}
+.card:hover {
+    transform: translateY(-3px);
+}
+
+.mt-6 { margin-top: 40px; }
+.mb-6 { margin-bottom: 40px; }
+.grid { display: grid; gap: 20px; }
+.grid-cols-1 { grid-template-columns: 1fr; }
+@media (min-width: 768px) {
+}
+.form-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+.page-header{
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+.pemilik-tugas{
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.dashboard-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 24px;
+    flex-wrap: wrap; /* Agar responsif di layar kecil */
+}
+
+.dashboard-card {
+    flex: 1;
+    background-color: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    min-width: 250px; /* Agar tetap bagus di layar sempit */
+}
+
+.dashboard-card h5 {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.dashboard-card p {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #111;
+    align-items: center;
+}
+.task-comments {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
