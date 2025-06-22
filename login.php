@@ -6,7 +6,6 @@ if (isset($_SESSION['user_id'])) {
     header("Location: dashboard.php"); // atau halaman lain sesuai peran
     exit();
 }
-
 require 'config.php';
 // ... Logika PHP untuk login ...
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
